@@ -62,7 +62,6 @@ echo "Merging system_ext.img "
 	umount $outdir/system_ext
 	rmdir $outdir/system_ext/
 	rm $outdir/system_ext.img
-fi
 echo "Finalising "
   umount $outdir/system
   rm -rf $outdir/system
