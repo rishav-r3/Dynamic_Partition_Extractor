@@ -55,6 +55,9 @@ echo "Merging system_ext.img"
 echo "Finalising "
     umount $outdir/system
     rm -rf $outdir/system
+    mkdir $LOCALDIR/MountedImage
+    mv $outdir/system-old.img $LOCALDIR/MountedImage/system.img
+    rm -rf $LOCALDIR/out
 
 echo "Congrats all Partition mounted"
 echo "Remember to debloat your self"
