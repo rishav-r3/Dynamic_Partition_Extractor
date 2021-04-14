@@ -56,7 +56,7 @@ echo "Finalising "
     umount $outdir/system
     rm -rf $outdir/system
     mkdir $LOCALDIR/MountedImage
-    mv $outdir/system-old.img $LOCALDIR/MountedImage/system.img
+    mv $outdir/system-new.img $LOCALDIR/MountedImage/system.img
     rm -rf $LOCALDIR/out
 
 echo "Congrats all Partition mounted"
