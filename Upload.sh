@@ -5,3 +5,5 @@ echo "This will zip and upload"
   echo "MountedImage link : " >> links.txt
   gzip -v MountedImage/system.img
   ./transfer trs MountedImage/system.img.gz | grep Download >> links.txt 
+  cat links.txt
+exit 1
