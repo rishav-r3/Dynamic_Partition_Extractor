@@ -14,6 +14,7 @@ pip install backports.lzma protobuf pycrypto
 pacman -S unace unrar zip unzip p7zip sharutils uudeview arj cabextract
 pacman -S python python-pip brotli lz4
 pip install backports.lzma protobuf pycrypto
+sudo pip3 install --upgrade protobuf
 ```
 ### For "rename" and "mpack" you need to manually clone and install the packages
 ```bash
