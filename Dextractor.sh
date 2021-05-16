@@ -3,7 +3,6 @@
 #Variables
 LOCALDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 outdir="$LOCALDIR/out"
-echo "This tool support upto 4gb system partition"
 ########################################################
 
 echo "Extracting ROM zip file....."
@@ -46,6 +45,10 @@ echo "Performing CleanUp......"
     rm -rf $outdir/boot.img 
     rm -rf $outdir/cust.img 
     rm -rf $outdir/dtbo.img
+    rm -rf $outdir/modem.img
+    rm -rf $outdir/tz.img
+    rm -rf $outdir/vendor.img
 echo "Finalising..."
     rm -rf $outdir/out/
 echo "Partitions has been merged successfully"   
+echo "Merging successfull, Merged system folder is in /out folder"
