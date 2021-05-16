@@ -42,4 +42,4 @@ echo "Moving  Merged system folder"
     cp -v -r -p $outdir/out/system $outdir/
 echo "Finalising..."
     rm -rf $outdir/out/
-   
+echo "Partitions has been merged successfully"   
