@@ -42,6 +42,10 @@ echo "Performing Cleanup"
     rm -rf $outdir/system.img && rm -rf $outdir/system && rm -rf $outdir/system_ext && rm -rf $outdir/system_ext.img && rm -rf $outdir/product && rm -rf $outdir/product.img
 echo "Moving  Merged system folder"
     cp -v -r -p $outdir/out/system $outdir/
+echo "Performing CleanUp......"
+    rm -rf $outdir/boot.img 
+    rm -rf $outdir/cust.img 
+    rm -rf $outdir/dtbo.img
 echo "Finalising..."
     rm -rf $outdir/out/
 echo "Partitions has been merged successfully"   
