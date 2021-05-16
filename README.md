@@ -1,3 +1,4 @@
+This is a tool for merging dynamic partition system.img to normal
 # Requirements
 - protobuf
 - LZMA
