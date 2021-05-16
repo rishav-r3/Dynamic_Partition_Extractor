@@ -9,10 +9,12 @@ echo "This tool support upto 4gb system partition"
 echo "Extracting ROM zip file....."
    bash $LOCALDIR/extractor.sh $1
 echo "Mounting Partitions"
-   mkdir $outdir/ system && mkdir $outdir/ system_ext && mkdir $outdir/product && rm -rf boot.img && rm -rf tz.img && rm -rf dtbo.img && rm -rf modem.img && rm -rf vendvendor.img					
-   mount -o loop $outdir/system.img $outdir/system && mount -o loop $outdir/system_ext.img $outdir/system_ext &&  mount -o loop $outdir/ product.img $outdir/product
+   mkdir $outdir/system && mkdir $outdir/system_ext && mkdir $outdir/product && rm -rf boot.img && rm -rf tz.img && rm -rf dtbo.img && rm -rf modem.img && rm -rf vendvendor.img					
+   mount -o ro $outdir/system.img $outdir/system/
+   mount -o ro $outdir/system_ext.img $outdir/system_ext/
+   mount -o ro $outdir/product.img $outdir/product/
 echo "Creating System Folder"
-    mkdir $LOCALDIR/out/out/system 
+    mkdir $outdir/out && cd $outdir/out && mkdir system 
 echo "Merging Partitions"
     cp -v -r -p $outdir/system/* $outdir/out/system/ &> /dev/null
     sync 
