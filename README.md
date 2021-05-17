@@ -1,4 +1,11 @@
-This is a tool for merging dynamic partition system.img to normal
+This is a tool for merging dynamic partition system.img to normal.
+You can use this tool to extract non dynamic firmware.
+
+Note⚠️: As i have Redmi Note 4x(mido) so i have entered it's system partition size in repack.sh if u have any other device then change count accordingly.
+
+Credits and Special thanks to:
+Erfan,Nippon,Jamie and Yash for helping me to make dynamic partition script and repacking script.
+
 # Requirements
 - protobuf
 - LZMA
