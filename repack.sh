@@ -16,7 +16,7 @@ echo "Mounting System.img"
    mount -o rw $outdir/out/system.img $outdir/out/system
 
 echo "Copying Contents of system folder to mounted system.img"
-   cp -v -r -p * $outdir/system/* $outdir/out/system/ &> /dev/null
+   cp -v -r -p  $outdir/system/* $outdir/out/system/ &> /dev/null
    sync
 
 echo "Unmounting System.img"
