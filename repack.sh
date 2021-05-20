@@ -8,7 +8,7 @@ outdir="$LOCALDIR/out"
 echo "Repacking system folder to system.img"
    cd $outdir/ && mkdir out
    cd $outdir/out/ && mkdir system
-   dd if=/dev/zero of=$outdir/out/system.img bs=3k count=986734
+   dd if=/dev/zero of=$outdir/out/system.img bs=3k count=997734
    mkfs.ext4 $outdir/out/system.img
    tune2fs -c0 -i0 $outdir/out/system.img
 
