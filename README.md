@@ -51,7 +51,7 @@ If you get syntax errors run dos2unix on extractor.sh
 # How to use
 ## Download
 ```
-git clone --recurse-submodules https://github.com/yashlearnpython/Firmware_extractor.git
+git clone --recurse-submodules https://github.com/Hunter-commits/Dynamic_Partition_Extractor.git
 ```
 
 ## Extract images from firmware URL
