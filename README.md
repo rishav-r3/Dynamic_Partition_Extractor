@@ -57,8 +57,8 @@ git clone --recurse-submodules https://github.com/Hunter-commits/Dynamic_Partiti
 ## Extract images from firmware URL
 Example: Extracting images from pixel 2 factory image:
 ```
-cd Firmware_extractor
+cd Dynamic_Partition_Extractor
 wget https://dl.google.com/dl/android/aosp/walleye-pq3a.190705.001-factory-cc471c8c.zip -o firmware.zip
 ./extractor.sh firmware.zip
 ```
-output will be on "Firmware_extractor/out"
+output will be on "Dynamic_Partition_Extractor/out"
