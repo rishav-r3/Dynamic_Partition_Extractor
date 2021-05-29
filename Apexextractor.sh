@@ -210,17 +210,6 @@ echo "Extracting com.android.wifi"
    sudo umount $LOCALDIR/tmp/tmp
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/Android.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.wifi.apex
 
-echo "Checking if com.android.tethering.inprocess.apex"
-   if [[ ($grep "com.android.tethering.inprocess.apex" $LOCALDIR/tmp) ]]; then
-   continue
-   cd $LOCALDIR/tmp && unzip com.android.tethering.inprocess.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
-   mkdir $LOCALDIR/apex/com.android.inprocess
-   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tethering.inprocess
-   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tethering.inprocess
-   umount $LOCALDIR/tmp/tmp
-   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.tethering.inprocess.apex
-
 echo "Copying apex folder to in system"
    cd $outdir/system/system && rm -rf apex
    cp -v -r -p $LOCALDIR/apex $outdir/system/system
