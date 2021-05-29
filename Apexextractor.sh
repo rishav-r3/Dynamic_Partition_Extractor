@@ -167,7 +167,7 @@ echo "Extracting com.android.permission"
 echo "Extracting com.android.resolv"
    cd $LOCALDIR/tmp && unzip com.android.resolv.apex 
    sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
-   mkdir $LOCALDIR/apex/com.android.permission 
+   mkdir $LOCALDIR/apex/com.android.resolv
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.resolv 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.resolv 
    sudo umount $LOCALDIR/tmp/tmp 
