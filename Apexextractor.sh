@@ -129,7 +129,7 @@ echo "Extracting com.android.media.swcodec"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.media.swcodec.apex
    
 echo "Extracting com.android.mediaprovider"
-   cd $LOCALDIR/tmp && unzip com.android.media.swcodec.apex 
+   cd $LOCALDIR/tmp && unzip com.android.mediaprovider.apex 
    sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.mediaprovider 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.mediaprovider 
@@ -191,25 +191,7 @@ echo "Extracting com.android.sdkext"
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.sdkext 
    sudo umount $LOCALDIR/tmp/tmp 
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.sdkext.apex
-   
-echo "Extracting com.android.tethering" 
-   cd $LOCALDIR/tmp && unzip com.android.tethering.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
-   mkdir $LOCALDIR/apex/com.android.tethering 
-   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tethering 
-   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tethering 
-   sudo umount $LOCALDIR/tmp/tmp 
-   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.tethering.apex
-   
-echo "Extracting com.android.tzdata" 
-   cd $LOCALDIR/tmp && unzip com.android.tzdata.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
-   mkdir $LOCALDIR/apex/com.android.tzdata 
-   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tzdata 
-   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tzdata 
-   sudo umount $LOCALDIR/tmp/tmp 
-   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.tzdata.apex
-   
+    
 echo "Extracting com.android.vndk.current"
    cd $LOCALDIR/tmp && unzip com.android.vndk.current.apex
    sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
@@ -223,13 +205,14 @@ echo "Extracting com.android.wifi"
    cd $LOCALDIR/tmp && unzip com.android.wifi.apex
    sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.wifi 
-   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.vndk.wifi 
-   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.wifi sudo 
-   umount $LOCALDIR/tmp/tmp
+   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.wifi 
+   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.wifi 
+   sudo umount $LOCALDIR/tmp/tmp
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/Android.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.wifi.apex
 
 echo "Checking if com.android.tethering.inprocess.apex"
-   if ( $[[grep "com.android.tethering.inprocess.apex" $LOCALDIR/tmp) ]]; then
+   if [[ ($grep "com.android.tethering.inprocess.apex" $LOCALDIR/tmp) ]]; then
+   continue
    cd $LOCALDIR/tmp && unzip com.android.tethering.inprocess.apex
    sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.inprocess
