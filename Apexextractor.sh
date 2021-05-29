@@ -7,7 +7,7 @@ echo "Making tmp directory"
    mkdir $LOCALDIR/tmp
 
 echo "Copying Apex files to tmp dir" 
-   cd $outdir/system/system/tmp 
+   cd $outdir/system/system/apex 
    cp -v -r -p $outdir/system/system/apex/* $LOCALDIR/tmp
 
 echo "Extracting com.android.adbd.apex" 
@@ -53,21 +53,21 @@ echo "Removing files extracted from com.android.apex.cts.shim.apex"
 
 echo "Extracting com.android.i18n" 
    cd $LOCALDIR/tmp && unzip com.android.i18n.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
 
 echo "Making com.android.i18n.apex" 
    mkdir $LOCALDIR/apex/com.android.i18n
 
 echo "Copying com.android.i18n.apex"
-   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.i18n.apex 
-   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.i18n.apex
+   cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.i18n 
+   cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.i18n
 
 echo "Unmounting tmp folder" 
    sudo umount $LOCALDIR/tmp/tmp
    
 echo "Extracting com.android.art.release"
    cd $LOCALDIR/tmp && unzip com.android.art.release.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.art.release 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.art.release 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.art.release 
@@ -76,7 +76,7 @@ echo "Extracting com.android.art.release"
 
 echo "Extracting com.android.cellbroadcast"
    cd $LOCALDIR/tmp && unzip com.android.cellbroadcast.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.cellbroadcast 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.cellbroadcast 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.cellbroadcast 
@@ -85,7 +85,7 @@ echo "Extracting com.android.cellbroadcast"
 
 echo "Extracting com.android.conscrypt" 
    cd $LOCALDIR/tmp && unzip com.android.conscrypt.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.conscrypt 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.conscrypt 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.conscrypt 
@@ -93,8 +93,8 @@ echo "Extracting com.android.conscrypt"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.conscrypt.apex
    
 echo "Extracting com.android.extservices"
-   cd $LOCALDIR/tmp && unzip com.android.extservices.apex sudo 
-   mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   cd $LOCALDIR/tmp && unzip com.android.extservices.apex 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.extservices 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.extservices 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.extservices 
@@ -103,7 +103,7 @@ echo "Extracting com.android.extservices"
 
 echo "Extracting com.android.ipsec"
    cd $LOCALDIR/tmp && unzip com.android.ipsec.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.ipsec 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.ipsec 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.ipsec 
@@ -112,15 +112,16 @@ echo "Extracting com.android.ipsec"
 
 echo "Extracting com.android.media" 
    cd  $LOCALDIR/tmp && unzip com.android.media.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp  
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp  
    mkdir $LOCALDIR/apex/com.android.media 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.media 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.media 
-   sudo umount $LOCALDIR/tmp/tmp rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.media.apex
+   sudo umount $LOCALDIR/tmp/tmp 
+   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.media.apex
    
 echo "Extracting com.android.media.swcodec"
    cd $LOCALDIR/tmp && unzip com.android.media.swcodec.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.swcodec 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.swcodec 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.swcodec 
@@ -129,7 +130,7 @@ echo "Extracting com.android.media.swcodec"
    
 echo "Extracting com.android.mediaprovider"
    cd $LOCALDIR/tmp && unzip com.android.media.swcodec.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.mediaprovider 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.mediaprovider 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.mediaprovider 
@@ -138,7 +139,7 @@ echo "Extracting com.android.mediaprovider"
    
 echo "Extracting com.android.neuralnetworks"
    cd $LOCALDIR/tmp && unzip com.android.neuralnetworks.apex 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.neuralnetworks 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.neuralnetworks 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.neuralnetworks 
@@ -146,8 +147,8 @@ echo "Extracting com.android.neuralnetworks"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.neuralnetworks.apex
    
 echo "Extracting com.android.os.statsd" 
-   cd $LOCALDIR/tmp && unzip com.android.os.statsd 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.os.statsd.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.statsd 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.statsd 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.statsd 
@@ -155,8 +156,8 @@ echo "Extracting com.android.os.statsd"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.statsd.apex
    
 echo "Extracting com.android.permission"
-   cd $LOCALDIR/tmp && unzip com.android.permission 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.permission.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.permission 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.permission 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.permission 
@@ -164,8 +165,8 @@ echo "Extracting com.android.permission"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.permission.apex
    
 echo "Extracting com.android.resolv"
-   cd $LOCALDIR/tmp && unzip com.android.resolv 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.resolv.apex 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.permission 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.resolv 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.resolv 
@@ -173,19 +174,18 @@ echo "Extracting com.android.resolv"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.resolv.apex
    
 echo "Extracting com.android.runtime" 
-   cd $LOCALDIR/tmp && unzip com.android.runtime 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.runtime.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.runtime 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.runtime 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.runtime 
    sudo umount $LOCALDIR/tmp/tmp 
-   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf 
-   $LOCALDIR/tmp/AndroidManifest.xml && 
+   rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml 
    rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.runtime.apex
  
 echo "Extracting com.android.sdkext"
-   cd $LOCALDIR/tmp && unzip com.android.sdkext 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.sdkext.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.sdkext 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.sdkext 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.sdkext 
@@ -193,8 +193,8 @@ echo "Extracting com.android.sdkext"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.sdkext.apex
    
 echo "Extracting com.android.tethering" 
-   cd $LOCALDIR/tmp && unzip com.android.tethering 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.tethering.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp 
    mkdir $LOCALDIR/apex/com.android.tethering 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tethering 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tethering 
@@ -202,8 +202,8 @@ echo "Extracting com.android.tethering"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.tethering.apex
    
 echo "Extracting com.android.tzdata" 
-   cd $LOCALDIR/tmp && unzip com.android.tzdata 
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   cd $LOCALDIR/tmp && unzip com.android.tzdata.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.tzdata 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tzdata 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tzdata 
@@ -211,8 +211,8 @@ echo "Extracting com.android.tzdata"
    rm -rf $LOCALDIR/tmp/apex_payload.img && rm -rf $LOCALDIR/tmp/AndroidManifest.xml && rm -rf $LOCALDIR/tmp/META-INF && rm -rf $LOCALDIR/tmp/apex_build_info.pb && rm -rf $LOCALDIR/tmp/assets && rm -rf $LOCALDIR/tmp/resources.arsc && rm -rf $LOCALDIR/tmp/com.android.tzdata.apex
    
 echo "Extracting com.android.vndk.current"
-   cd $LOCALDIR/tmp && unzip com.android.vndk.current
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   cd $LOCALDIR/tmp && unzip com.android.vndk.current.apex
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.vndk.current
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.vndk.current
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.vndk.current
@@ -221,7 +221,7 @@ echo "Extracting com.android.vndk.current"
    
 echo "Extracting com.android.wifi"
    cd $LOCALDIR/tmp && unzip com.android.wifi.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp 
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.wifi 
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.vndk.wifi 
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.wifi sudo 
@@ -231,7 +231,7 @@ echo "Extracting com.android.wifi"
 echo "Checking if com.android.tethering.inprocess.apex"
    if ( $[[grep "com.android.tethering.inprocess.apex" $LOCALDIR/tmp) ]]; then
    cd $LOCALDIR/tmp && unzip com.android.tethering.inprocess.apex
-   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp
+   sudo mount -o loop,ro,sync apex_payload.img $LOCALDIR/tmp/tmp
    mkdir $LOCALDIR/apex/com.android.inprocess
    cp -v -r -p $LOCALDIR/tmp/tmp/* $LOCALDIR/apex/com.android.tethering.inprocess
    cp -v -r -p $LOCALDIR/tmp/apex_pubkey $LOCALDIR/apex/com.android.tethering.inprocess
